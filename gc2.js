@@ -5,7 +5,7 @@
     __hasProp = {}.hasOwnProperty;
 
   basedata = {
-    version: "0.284 (pre-alpha)",
+    version: "0.354 (pre-alpha)",
     game_started: false,
     goomies: 0,
     total_goomies: 0,
@@ -71,8 +71,8 @@
         generator.level = 1;
         generator.upgrades = [];
       }
-      for (_j = 0, _len1 = items.length; _j < _len1; _j++) {
-        item = items[_j];
+      for (_j = 0, _len1 = itemlist.length; _j < _len1; _j++) {
+        item = itemlist[_j];
         item.bought = false;
       }
       recalc();
@@ -365,12 +365,15 @@
     $("#export_save_button").click(function() {
       var a;
       a = export_save();
-      $("#export_save").show();
-      $("#export_save_string").val(a);
+      $("#export_save_string").val(sstr_to_b64(a));
       $("#export_qr_code")[0].getContext("2d").clearRect(0, 0, 200, 200);
-      return $("#export_qr_code").qrcode({
+      $("#export_qr_code").qrcode({
         text: a
       });
+      return $("#export_save").show();
+    });
+    $("#about_button").click(function() {
+      return $("#about").show();
     });
     $("#about_close").click(function() {
       return $("#about").hide();

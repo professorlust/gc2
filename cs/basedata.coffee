@@ -85,7 +85,7 @@ basedata =
 			generator.level = 1
 			generator.upgrades = []
 
-		for item in items
+		for item in itemlist
 			item.bought = false
 
 		recalc()

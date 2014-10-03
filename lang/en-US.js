@@ -44,7 +44,7 @@ langs ["en-US"] = {
 	"cave_name": "Geothermal Cave",
 	"trench_name": "Oceanic Trench",
 
-	"cursor_description": "A cursor to click on the Goomy automatically.",
+	"cursor_description": "A cursor to click on the Goomy automatically. Also gives +0.2 exp/sec.",
 	"youngster_description": "A nice little youngster who catches Goomies.",
 	"daycare_description": "A daycare where trainers deposit their Goomies to breed.",
 	"reserve_description": "A wildlife reserve where Goomy is a protected Pokémon.",
