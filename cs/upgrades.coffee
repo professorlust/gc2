@@ -55,3 +55,47 @@ ball99.cost = 1e15
 youngster01 = new Item("youngster01", 51)
 youngster01.unlock_condition = -> gens["daycare"].count >= 50 && gens["youngster"].count >= 100
 youngster01.cost = 6e6
+
+youngster02 = new Item("youngster02", 52)
+youngster02.unlock_condition = -> gens["reserve"].count >= 50 && gens["youngster"].count >= 200
+youngster02.cost = 3e7
+
+youngster03 = new Item("youngster03", 53)
+youngster03.unlock_condition = -> gens["reserve"].count >= 50 && gens["youngster"].count >= 300
+youngster03.cost = 15e7
+
+youngster04 = new Item("youngster04", 54)
+youngster04.unlock_condition = -> gens["reserve"].count >= 50 && gens["youngster"].count >= 400
+youngster04.cost = 7e8
+
+youngster05 = new Item("youngster05", 55)
+youngster05.unlock_condition = -> gens["reserve"].count >= 50 && gens["youngster"].count >= 500
+youngster05.cost = 4e9
+
+youngster06 = new Item("youngster06", 56)
+youngster06.unlock_condition = -> gens["reserve"].count >= 50 && gens["youngster"].count >= 600
+youngster06.cost = 24e9
+
+youngster07 = new Item("youngster07", 57)
+youngster07.unlock_condition = -> gens["reserve"].count >= 50 && gens["youngster"].count >= 700
+youngster07.cost = 2e11
+
+youngster08 = new Item("youngster08", 58)
+youngster08.unlock_condition = -> gens["reserve"].count >= 50 && gens["youngster"].count >= 800
+youngster08.cost = 134217728e4
+
+youngster09 = new Item("youngster09", 59)
+youngster09.unlock_condition = -> gens["reserve"].count >= 50 && gens["youngster"].count >= 900
+youngster09.cost = 1.44e13
+
+youngster10 = new Item("youngster10", 60)
+youngster10.unlock_condition = -> gens["reserve"].count >= 50 && gens["youngster"].count >= 1000
+youngster10.cost = 24.192e13
+
+youngster11 = new Item("youngster11", 61)
+youngster11.unlock_condition = -> gens["reserve"].count >= 50 && gens["youngster"].count >= 1100
+youngster11.cost = 5497558138880000
+
+youngster12 = new Item("youngster12", 62)
+youngster12.unlock_condition = -> gens["reserve"].count >= 50 && gens["youngster"].count >= 1200
+youngster12.cost = 259020683712000000

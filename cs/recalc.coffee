@@ -25,12 +25,56 @@ recalc_gps = ->
 		gens["youngster"].gps *= 2
 		gens["daycare"].gps *= 4
 
+	if items["youngster02"].bought
+		gens["youngster"].gps *= 2
+		gens["reserve"].gps *= 4
+
+	if items["youngster03"].bought
+		gens["youngster"].gps *= 2
+		gens["farm"].gps *= 4
+
+	if items["youngster04"].bought
+		gens["youngster"].gps *= 2
+		gens["fountain"].gps *= 4
+
+	if items["youngster05"].bought
+		gens["youngster"].gps *= 2
+		gens["cave"].gps *= 4
+
+	if items["youngster06"].bought
+		gens["youngster"].gps *= 2
+		gens["trench"].gps *= 4
+
+	if items["youngster07"].bought
+		gens["youngster"].gps *= 2
+		gens["arceus"].gps *= 4
+
+	if items["youngster08"].bought
+		gens["youngster"].gps *= 2
+		gens["rngabuser"].gps *= 4
+
+	if items["youngster09"].bought
+		gens["youngster"].gps *= 2
+		gens["cloninglab"].gps *= 4
+
+	if items["youngster10"].bought
+		gens["youngster"].gps *= 2
+		gens["church"].gps *= 4
+
+	if items["youngster11"].bought
+		gens["youngster"].gps *= 2
+		gens["gcminer"].gps *= 4
+
+	if items["youngster12"].bought
+		gens["youngster"].gps *= 2
+		gens["photoncollider"].gps *= 4
+
 	basedata.expps = 0.2 * gens["cursor"].count
 
 	new_gps = 0
 	for gen in generators
 		new_gps += gen.count * gen.gps
-
+		
 	new_gps *= basedata.sliggoo_gpsmult
 	new_gps *= basedata.raindance_mult
 
