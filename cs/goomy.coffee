@@ -11,6 +11,7 @@ goomy =
 		@next_lv_exp = @level * @level * 100
 		recalc_gpc()
 		update_all_numbers()
+		regenerate_tooltips()
 
 	gain_exp: (exp) ->
 		@exp += exp

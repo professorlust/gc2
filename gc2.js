@@ -264,7 +264,8 @@
       this.lv_total_exp += this.next_lv_exp;
       this.next_lv_exp = this.level * this.level * 100;
       recalc_gpc();
-      return update_all_numbers();
+      update_all_numbers();
+      return regenerate_tooltips();
     },
     gain_exp: function(exp) {
       var _results;
