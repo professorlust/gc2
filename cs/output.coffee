@@ -67,33 +67,6 @@ update_all_numbers = ->
 				</div>
 			")
 
-			# create the tooltip
-			$("#tooltips").append("<div class='item-tooltip' id='#{item.name}_tooltip'></div>")
-			$("##{item.name}_tooltip").append(
-				"<p id='#{item.name}_description'>" + langs[lang]["#{item.name}_description"] + "</p>" + "
-				<br />
-				Cost: <span class='tooltip-gps' id='#{item.name}_tooltip_cost'></span> Goomies
-				<hr />" +
-				"<span id='#{item.name}_flavourtext'>" + langs[lang]["#{item.name}_caption"] + "</span>"
-			)
-			$("##{item.name}_tooltip_cost").html(if item.cost < 1e12 then reprnum(Math.floor(item.cost)) else reprnum(Math.floor(item.cost), "long"))
-			$("##{item.name}").qtip({
-				content: {
-					title: langs[lang]["#{item.name}_name"],
-					text: $($("##{item.name}_tooltip")[0])
-				},
-				style: {
-					classes: "qtip-dark",
-					width: 300
-				},
-				position: {
-					my: if $(window).width() > 1024 then "right center" else "bottom left",
-					at: if $(window).width() > 1024 then "left center" else "top left",
-					viewport: $(window)
-				},
-				show: { delay: 0 },
-				hide: { delay: 100 },
-			})
 			$("##{item.name}").click ((name) -> ( ->
 				if items[name].buy()
 					$("##{name}").hide()
@@ -191,6 +164,39 @@ regenerate_tooltips = ->
 	$(".lang_tooltip_buy10").html(langs[lang]["tooltip_buy10"])
 	$(".lang_tooltip_buy100").html(langs[lang]["tooltip_buy100"])
 	$(".lang_tooltip_sell1").html(langs[lang]["tooltip_sell1"])
+
+
+	# and now the item tooltips.
+
+	for item in itemlist
+		if !item.locked && !item.bought
+			# create the tooltip
+			$("#tooltips").append("<div class='item-tooltip' id='#{item.name}_tooltip'></div>")
+			$("##{item.name}_tooltip").append(
+				"<p id='#{item.name}_description'>" + langs[lang]["#{item.name}_description"] + "</p>" + "
+				<br />
+				Cost: <span class='tooltip-gps' id='#{item.name}_tooltip_cost'></span> Goomies
+				<hr />" +
+				"<span id='#{item.name}_flavourtext'>" + langs[lang]["#{item.name}_caption"] + "</span>"
+			)
+			$("##{item.name}_tooltip_cost").html(if item.cost < 1e12 then reprnum(Math.floor(item.cost)) else reprnum(Math.floor(item.cost), "long"))
+			$("##{item.name}").qtip({
+				content: {
+					title: langs[lang]["#{item.name}_name"],
+					text: $($("##{item.name}_tooltip")[0])
+				},
+				style: {
+					classes: "qtip-dark",
+					width: 300
+				},
+				position: {
+					my: if $(window).width() > 1024 then "right center" else "bottom left",
+					at: if $(window).width() > 1024 then "left center" else "top left",
+					viewport: $(window)
+				},
+				show: { delay: 0 },
+				hide: { delay: 100 },
+			})
 
 
 $(window).resize( ->

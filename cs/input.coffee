@@ -30,10 +30,11 @@ init_input = ->
 
 	$("#export_save_button").click ->
 		a = export_save()
-		$("#export_save").show()
-		$("#export_save_string").val(a)
+		$("#export_save_string").val(sstr_to_b64(a))
 		$("#export_qr_code")[0].getContext("2d").clearRect(0, 0, 200, 200)
 		$("#export_qr_code").qrcode({ text: a })
+		$("#export_save").show()
 
+	$("#about_button").click -> $("#about").show()
 	$("#about_close").click -> $("#about").hide()
 	$("#export_close").click -> $("#export_save").hide()

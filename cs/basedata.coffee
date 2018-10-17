@@ -1,6 +1,6 @@
 basedata =
 
-	version: "0.354 (pre-alpha)",
+	version: "0.363 (pre-alpha)",
 
 	game_started: false,
 
@@ -22,6 +22,7 @@ basedata =
 
 	raindance_mult: 1.0,
 	frenzy_clickmult: 1.0,
+	exp_clickmult: 1.0,
 
 	clicks: 0,   # number of times the Great Goomy was clicked
 	total_clicks: 0,
@@ -41,7 +42,7 @@ basedata =
 		@earn(gain)
 		@clicks += 1
 		@total_clicks += 1
-		goomy.gain_exp(goomy.level)
+		goomy.gain_exp(goomy.level * @exp_clickmult)
 		return gain
 
 	update: (ms) ->
@@ -85,7 +86,7 @@ basedata =
 			generator.level = 1
 			generator.upgrades = []
 
-		for item in items
+		for item in itemlist
 			item.bought = false
 
 		recalc()

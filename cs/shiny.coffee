@@ -8,7 +8,7 @@ Goomy Bonus        60.00%    Give a huge bonus of Goomies.
 Rain Dance         33.50%    Gives both clicking and GpS a x12 boost for 70.4 seconds.
 Click Frenzy        5.00%    Gives clicking a x704 GpC boost for 7.04 seconds.
 Click EXP Frenzy    0.95%    Gives clicking a x10 EXP/click boost for 20 seconds.
-Level Up            0.45%    Levels the Goomy up once.
+Level Up            0.45%    Levels a random generator up once.
                     0.10%
 
 ###
@@ -45,6 +45,10 @@ shiny_goomy =
 					basedata.frenzy_clickmult = 1.0
 					$("#shiny_goomy_click_frenzy").hide()
 					recalc()
+				if @effect == "clickexp"
+					basedata.exp_clickmult = 1.0
+					$("#shiny_goomy_exp_click_frenzy").hide()
+					recalc()
 		else if @appeared
 			if @opacity < 1
 				@opacity = Math.min(1, @opacity + ms / 2000)
@@ -66,9 +70,9 @@ shiny_goomy =
 				else if spinner < 0.985
 					@effect = "clickmult"
 				else if spinner < 0.9945
-					@effect = "goomies"
+					@effect = "clickexp"
 				else if spinner < 0.999
-					@effect = "goomies"
+					@effect = "levelup"
 				else
 					@effect = "goomies"
 
@@ -78,6 +82,7 @@ shiny_goomy =
 				$("#shiny_goomy").click (e) => @click e.pageX, e.pageY
 
 	click: (x, y) ->
+		
 		$("#shiny_goomy").unbind()
 		$("#shiny_goomy").hide()
 		@appeared = false
@@ -85,24 +90,37 @@ shiny_goomy =
 		basedata.clicks += 1
 		basedata.total_clicks += 1
 		@cooldown_time = init_cooldown_time
+
 		if @effect == "goomies"
+			# Approximately 140 seconds worth of Goomies.
 			# award = 120 seconds of Goomy production + 200 clicks worth of Goomies
 			gain = basedata.gps * 120 + basedata.gpc * 200
-			shiny_plus_marker = new PlusMarker("Bonus! +#{reprnum(Math.floor(gain), "long")} Goomies!", x, y, 3000)
+			shiny_plus_marker = new PlusMarker(langs[lang]["shiny_goomies_pre"] + reprnum(Math.floor(gain), "long") + langs[lang]["shiny_goomies_post"], x, y, 3000)
 			basedata.earn(gain)
 			return gain
+
 		else if @effect == "raindance"
+			# bonus = 774.4 seconds worth of Goomies + clicking.
 			@time_left = 70400
 			basedata.raindance_mult = 12.0
 			recalc()
 			$("#shiny_goomy_rain_dance").show()
-			shiny_plus_marker = new PlusMarker("Rain Dance! Production x12 for 70.4 seconds!", x, y, 3000)
+			shiny_plus_marker = new PlusMarker(langs[lang]["shiny_raindance"], x, y, 3000)
+
 		else if @effect == "clickmult"
+			# approximately 5,000 seconds worth of Goomies
 			@time_left = 7040
 			basedata.frenzy_clickmult = 704.0
 			recalc()
 			$("#shiny_goomy_click_frenzy").show()
-			shiny_plus_marker = new PlusMarker("Click Frenzy! Clicking x704 for 7.04 seconds!", x, y, 3000)
+			shiny_plus_marker = new PlusMarker(langs[lang]["shiny_clickmult"], x, y, 3000)
+
+		else if @effect == "clickexp"
+			@time_left = 20000
+			basedata.exp_clickmult = 12.0
+			recalc()
+			$("#shiny_goomy_exp_click_frenzy").show()
+			shiny_plus_marker = new PlusMarker(langs[lang]["shiny_clickexp"], x, y, 3000)
 
 
 @click_on_shiny_goomy = shiny_goomy.click

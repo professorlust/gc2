@@ -127,6 +127,11 @@ button:active { background-color: #323232; }
 	padding: 8px 8px;
 }
 
+#statbar button{
+	font-size: 100%;
+	margin: 0.2ex 0.2em;
+}
+
 #genbar{
 	display: table-cell;
 	width: 400px;
